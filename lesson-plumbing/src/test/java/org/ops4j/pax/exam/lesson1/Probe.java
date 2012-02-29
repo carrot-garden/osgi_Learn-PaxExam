@@ -19,42 +19,60 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
- * Your first "probe". Well not really Probe. Its the class that will be put in a jar on-the-fly.
- * Pax Exam will calculate a fairly relaxed Manifest Metadata for you.
- * You don't have access to the manifest at this point.
- *
- * Everything that you use (classes) must be exported by other bundles in your setup.
- * Its import to understand that this class will be put into a bundle, possibly transfered to another JVM (depending on which TestContainer you pick), and executed remotly.
- * Consider this, specially regarding Exceptions, Parameters etc.
- *
- * A Probe must also have a public no argument constructor, like the one you get by default (no -constructor specified).
- *
+ * Your first "probe".
+ * 
+ * Well not really Probe.
+ * 
+ * Its the class that will be put in a jar on-the-fly.
+ * 
+ * Pax Exam will calculate a fairly relaxed Manifest Metadata for you. You don't
+ * have access to the manifest at this point.
+ * 
+ * Everything that you use (classes) must be exported by other bundles in your
+ * setup.
+ * 
+ * Its import to understand that this class will be put into a bundle, possibly
+ * transfered to another JVM (depending on which TestContainer you pick), and
+ * executed remotely. Consider this, specially regarding Exceptions, Parameters
+ * etc.
+ * 
+ * A Probe must also have a public no argument constructor, like the one you get
+ * by default (no -constructor specified).
+ * 
  * Tests that are being add later must have public visibility.
- *
- * Parameters:
- * They have a special meaning.
- * You can have:
- * - no argument
- * - BundleContext, which you will get from the OSGi Runtime
- * - BundlContext + more parameters: those are being passed in at "call" time. Specially useful when writing tests that are being re-used. This gives you some flexibility.
+ * 
+ * Parameters: They have a special meaning. You can have: - no argument -
+ * BundleContext, which you will get from the OSGi Runtime - BundlContext + more
+ * parameters: those are being passed in at "call" time. Specially useful when
+ * writing tests that are being re-used. This gives you some flexibility.
  */
 public class Probe {
 
-    public void probe1()
-    {
-        System.out.println( "----- > Inside OSGi. No Bundle Context :( " );
-    }
+	public Probe() {
 
-    public void probe2( BundleContext ctx )
-    {
-        System.out.println( "----- > This Bundles name is " + ctx.getBundle().getSymbolicName() );
-        for( Bundle b : ctx.getBundles() ) {
-            System.out.println( "Bundle : " + b.getSymbolicName() );
-        }
-    }
+	}
 
-    public void probe3( BundleContext ctx, String parameter )
-    {
-        System.out.println( "Parameter: " + parameter );
-    }
+	public void probe1() {
+
+		System.out.println("----- > Inside OSGi. No Bundle Context :( ");
+
+	}
+
+	public void probe2(final BundleContext ctx) {
+
+		System.out.println("----- > This Bundles name is "
+				+ ctx.getBundle().getSymbolicName());
+
+		for (final Bundle b : ctx.getBundles()) {
+			System.out.println("Bundle : " + b.getSymbolicName());
+		}
+
+	}
+
+	public void probe3(final BundleContext ctx, final String parameter) {
+
+		System.out.println("Parameter: " + parameter);
+
+	}
+
 }

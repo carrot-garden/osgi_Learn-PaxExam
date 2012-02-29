@@ -15,42 +15,51 @@
  */
 package org.ops4j.pax.exam.lesson4;
 
-import org.junit.Test;
-import org.ops4j.pax.exam.testforge.WaitForService;
-import org.osgi.service.log.LogService;
-import org.ops4j.pax.exam.player.Player;
-import org.ops4j.pax.exam.testforge.SingleClassProvider;
-import org.slf4j.LoggerFactory;
-
 import static org.ops4j.pax.exam.CoreOptions.*;
 
+import org.junit.Test;
+import org.ops4j.pax.exam.options.MavenArtifactProvisionOption;
+import org.ops4j.pax.exam.player.Player;
+import org.ops4j.pax.exam.testforge.WaitForService;
+import org.osgi.service.log.LogService;
+
 /**
+ * 
  * This is the latest face of Pax Exam. Its mostly written to:
- * 1. Show how simple it is to use the API from Lesson 1 and 2 to create a small layer on top that is very simple to use and also quite small (look at {@link Player} class.
+ * 
+ * 1. Show how simple it is to use the API from Lesson 1 and 2 to create a small
+ * layer on top that is very simple to use and also quite small (look at
+ * {@link Player} class.
+ * 
  * 2. Have a very comprehensive way to run pre-built tests.
- *
- * You see pretty much the essence of Pax Exam packed into a very small space:
- * - add Options
- * - add Tests/Probe
- * .. and you are ready to "play" (see  {@link org.ops4j.pax.exam.player.Player#play()}
- *
+ * 
+ * You see pretty much the essence of Pax Exam packed into a very small space: -
+ * add Options - add Tests/Probe .. and you are ready to "play" (see
+ * {@link org.ops4j.pax.exam.player.Player#play()}
+ * 
  * This can be used anywhere, not only in JUnit tests.
+ * 
  */
 public class LessonTest {
 
-    @Test
-    public void lessonTest()
-        throws Exception
-    {
-        new Player().with(
-            options(
-                mavenBundle().groupId( "org.ops4j.pax.logging" ).artifactId( "pax-logging-service" ).version( "1.6.2" ).start()
-            )
-        )
-        .test( WaitForService.class, LogService.class.getName(), 5000 )
-        // set skip systembundle=true because equinox is indeed loading LoggerFactory from a different source.
-        .test( SingleClassProvider.class, LoggerFactory.class.getName(), true )
-        .play();
+	@Test
+	public void lessonTest() throws Exception {
 
-    }
+		final MavenArtifactProvisionOption service = mavenBundle()
+				.groupId("org.ops4j.pax.logging")
+				.artifactId("pax-logging-service").version("1.6.2").start();
+
+		new Player().with(options(service))
+				.test(WaitForService.class, LogService.class.getName(), 5000)
+
+				// set skip systembundle=true because equinox is indeed loading
+				// LoggerFactory from a different source.
+				// .test(SingleClassProvider.class,
+				// LoggerFactory.class.getName(),
+				// true)//
+
+				.play();
+
+	}
+
 }

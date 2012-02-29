@@ -21,13 +21,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DoSomething {
-	private static Logger LOG = LoggerFactory.getLogger( DoSomething.class );
-	
+
+	private static Logger LOG = LoggerFactory.getLogger(DoSomething.class);
+
 	static {
 		LOG.warn("Hello World!");
 	}
-	
+
 	public void shutdown() {
 		LOG.info("Goodbye World!");
 	}
+
 }

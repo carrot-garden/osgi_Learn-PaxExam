@@ -1,59 +1,82 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.okidokiteam.learnpaxexam</groupId>
-	    <artifactId>learn-exam-reactor</artifactId>
-	    <version>0.9.0-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>com.okidokiteam.learnpaxexam</groupId>
+		<artifactId>learn-exam-reactor</artifactId>
+		<version>0.9.0-SNAPSHOT</version>
+	</parent>
 
-    <groupId>com.okidokiteam.learnpaxexam</groupId>
-    <artifactId>lesson-servermode</artifactId>
-    <version>0.9.0-SNAPSHOT</version>
+	<artifactId>lesson-servermode</artifactId>
 
-     <name>Pax Exam Strategy Guide - Server Mode</name>
+	<name>Pax Exam Strategy Guide - Server Mode</name>
 
-    <dependencies>
-        <!-- Pax Exam Dependencies -->
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-container-native</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-        	<groupId>org.apache.felix</groupId>
-        	<artifactId>org.apache.felix.framework</artifactId>
-        	<version>${felixversion}</version>
-            <scope>test</scope>
-        </dependency>
+	<dependencies>
 
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-link-assembly</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
-        
-         <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-testforge</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
+		<!-- Pax Exam Dependencies -->
 
-        <!-- For sane logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.6.1</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-spi</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-container-native</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.framework</artifactId>
+			<version>${felixversion}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-link</artifactId>
+			<version>${paxurlversion}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-aether</artifactId>
+			<version>${paxurlversion}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-link-assembly</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-testforge</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- For sane logging -->
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
 
 </project>

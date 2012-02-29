@@ -19,24 +19,30 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
- * Your first "probe". Well not really Probe. Its the class that will be put in a jar on-the-fly.
- * Pax Exam will calculate a fairly relaxed Manifest Metadata for you.
- * You don't have access to the manifest at this point.
- *
- * Everything that you use (classes) must be exported by othher bundles in your setup.
+ * Your first "probe". Well not really Probe. Its the class that will be put in
+ * a jar on-the-fly. Pax Exam will calculate a fairly relaxed Manifest Metadata
+ * for you. You don't have access to the manifest at this point.
+ * 
+ * Everything that you use (classes) must be exported by othher bundles in your
+ * setup.
  */
 public class Probe {
 
-    public void probe1()
-    {
-        System.out.println( "----- > Inside OSGi. No Bundle Context :( " );
-    }
+	public void probe1() {
 
-    public void probe2( BundleContext ctx )
-    {
-        System.out.println( "----- > This Bundles name is " + ctx.getBundle().getSymbolicName() );
-        for( Bundle b : ctx.getBundles() ) {
-            System.out.println( "Bundle : " + b.getSymbolicName() );
-        }
-    }
+		System.out.println("----- > Inside OSGi. No Bundle Context :( ");
+
+	}
+
+	public void probe2(final BundleContext ctx) {
+
+		System.out.println("----- > This Bundles name is "
+				+ ctx.getBundle().getSymbolicName());
+
+		for (final Bundle b : ctx.getBundles()) {
+			System.out.println("Bundle : " + b.getSymbolicName());
+		}
+
+	}
+
 }
